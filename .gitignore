@@ -1,0 +1,11 @@
+# Ignore all JSON files
+*.json
+
+# Ignore all other files except main.py
+*
+
+# Allow main.py
+!main.py
+
+# Allow .gitignore
+!.gitignore
