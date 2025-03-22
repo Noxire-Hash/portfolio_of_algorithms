@@ -170,6 +170,7 @@ def aggregate(data, key):
 
         return {
             "Average": round(sum(numeric_data) / len(numeric_data), 2),
+            "Sum": round(sum(numeric_data), 2),
             "Max": max(numeric_data),
             "Min": min(numeric_data),
         }
@@ -280,15 +281,19 @@ def main():
         perform_another_operation = input(
             "\nWould you like to perform another operation? (y/n): "
         ).lower()
-        if perform_another_operation.lower() in APPROVE_ARRAY:
+        if perform_another_operation in APPROVE_ARRAY:
             continue
-
-        elif perform_another_operation.lower() in DISAPPROVE_ARRAY:
-            exit_opt = 0
-            exit_opt_confirm = input("Are you sure you want to exit ? (y/n)")
-
-        if exit_opt_confirm.lower() in APPROVE_ARRAY and exit_opt == 0:
-            break
+        elif perform_another_operation in DISAPPROVE_ARRAY:
+            exit_confirm = input("Are you sure you want to exit? (y/n): ").lower()
+            if exit_confirm in APPROVE_ARRAY:
+                print("Exiting program. Goodbye!")
+                break
+            # If they don't confirm exit, continue with the loop
+            else:
+                continue
+        else:
+            print("Invalid input. Please enter 'y' or 'n'.")
+            # Optionally loop back to ask the question again
 
 
 if __name__ == "__main__":
