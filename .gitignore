@@ -2,7 +2,7 @@
 *.json
 
 # Ignore all other files except main.py
-*
+
 
 # Allow main.py
 !main.py
